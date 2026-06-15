@@ -1,5 +1,11 @@
 # Check Name of Login Component (WebdriverIO + Mocha + Chai)
 
+## Project Structure
+
+- test/specs → test files
+- test/pageobjects → Page Object Model
+- wdio.conf.js → WDIO configuration
+
 ## How to Run Tests
 
 To run this project locally, make sure you have the following installed:
@@ -18,9 +24,12 @@ To run this project locally, make sure you have the following installed:
 
 ---
 
-## Overview of Login Name Title (chai-interfaces.spec.js)
+## Overview of Login Name Component (chai-interfaces.spec.js)
 
-The purpose of this test is to check the name of the Login component using the Chai library.
+The purpose of this test is to verify the Login Page title using the Chai assertion library in a WebdriverIO framework.
+
+This project uses WebdriverIO with Mocha as a test runner and Chai for assertions.
+
 
 
 ## Chai interfaces
