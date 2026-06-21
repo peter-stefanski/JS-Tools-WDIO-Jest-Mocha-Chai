@@ -1,10 +1,10 @@
 class LoginPage {
   get heading() {
-    return $('//*[@id="form"]/div/div/div[1]/div/h2');
+    return $('//h2[text()="Login to your account"]');
   }
 
   async open() {
-    await browser.url("https://automationexercise.com/login");
+    await browser.url("/login");
   }
 
   async getHeadingText() {
