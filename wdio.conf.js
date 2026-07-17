@@ -124,7 +124,34 @@ exports.config = {
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
-  reporters: ["spec"],
+
+  reporters: [
+    [
+      "spec",
+      {
+        showPreface: false,
+        realtimeReporting: true,
+        addConsoleLogs: true,
+        onlyFailures: true,
+        symbols: {
+          passed: "[PASS]",
+          failed: "[FAIL]",
+        },
+      },
+    ],
+    [
+      "html-nice",
+      {
+        outputDir: "./reports/html",
+        filename: "report.html",
+        reportTitle: "Login Test Automation Report",
+        linkScreenshots: true,
+        collapseTests: false,
+        showInBrowser: false,
+        useOnAfterCommandForScreenshot: false,
+      },
+    ],
+  ],
 
   // Options to be passed to Mocha.
   // See the full list at http://mochajs.org/
@@ -227,8 +254,11 @@ exports.config = {
    * @param {boolean} result.passed    true if test has passed, otherwise false
    * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
    */
-  // afterTest: function(test, context, { error, result, duration, passed, retries }) {
-  // },
+  afterTest: async function (test, context, { error, passed }) {
+    if (!passed) {
+      await browser.takeScreenshot();
+    }
+  },
 
   /**
    * Hook that gets executed after the suite has ended

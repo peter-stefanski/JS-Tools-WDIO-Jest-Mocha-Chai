@@ -1,13 +1,8 @@
-Feature: Authentication
+Feature: Authentication filed
 
-
-Scenario: User sign in with valid credentials
-Given the user is on the sign in page
-When the user enters valid credentials
-Then the user should be redirected to the main page
-
-
-Scenario: User signs up with valid registration data
-Given the user is on the sign up page
-When the user enters valid registration data
-Than the user should be redirected to the sign in page
+Scenario: User sign in with invalid credentials to see information about mistake
+Given the user is on the sign in/sing up page
+And fill all input with email and password
+And press submit button
+When the user enters invalid credentials, becouse it was not register before
+Then the user should see information about invalid user data
